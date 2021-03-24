@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<title>MachyTech</title>
+<link rel="icon" href="/static/media/Logo_icon.png" sizes="64x64" type="image/png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+* {box-sizing: border-box;}
+
+/* Style the input container */
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* Style the form icons */
+.icon {
+  padding: 10px;
+  background: black;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+/* Style the input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid black;
+}
+.btn {
+  background-color: black;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 1;
+}
+
+.btn:hover{
+  opacity: 0.8;
+}
+</style>
+<body class="w3-light-grey">
+<div class="w3-main" style="margin-left:300px;margin-top:43px;margin-right:300px;margin-bottom:43px">
+  <div class="w3-container" style="padding-top:22px">
+    <h5><b> Register </b></h5>
+  </div>
+  <div class="w3-container w3-light-grey">
+
+    <form action="" method="post" autocomplete="off">
+      <br>
+      <div class="input-container">
+        <i class="fa fa-user icon"></i>
+      <input class="input-field w3-border" type="text" placeholder="Username" required id="username" name="username">
+      </div>
+      <div class="input-container">
+        <i class="fa fa-lock icon"></i>
+        <input class="input-field w3-border" type="password" placeholder="Password" required name="password" id="password" onChange="onChange()">
+      </div>
+      <div class="input-container">
+        <i class="fa fa-check icon"></i>
+        <input class="input-field w3-border" type="password" placeholder="Confirm Password" required name="confirm_password" id="confirm_password" onChange="onChange()">
+      </div>
+      <div class="input-container">
+        <i class="fa fa-envelope icon"></i>
+        <input class="input-field w3-border" type="email" placeholder = "E-mail" required name="email" id="email">
+      </div>
+      <div class="msg">{{msg}}</div> 
+      <br>
+      <button class="btn" type="submit" value="Register" diabled>
+        <i class="fa fa-sign-in"></i> REGISTER
+      </button>
+    </form>
+    <br>
+    Go to <a href="{{ url_for('logout') }}">login</a> page.
+  </div>
+</div>
+<script>
+  function onChange() {
+    const password = document.querySelector('input[name=password]');
+    const confirm = document.querySelector('input[name=confirm_password]');
+    if (confirm.value === password.value) {
+      confirm.setCustomValidity('');
+    } else {
+      confirm.setCustomValidity('Passwords do not match');
+    }
+  }
+</script>
+
+<footer class="w3-center w3-black w3-padding-64">
+<a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+<div class="w3-xlarge w3-section">
+  <a href="https://medium.com/@machytech" class="fa fa-medium w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+  <a href="https://twitter.com/MachyTech" class="fa fa-twitter w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+  <a href="https://www.youtube.com/channel/UCiW0UZxbnujYJFIxCzSYc2A/featured" class="fa fa-youtube w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+  <a href="https://www.instagram.com/machy.tech/" class="fa fa-instagram w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+</div>
+<p>Strength and Passion</p>
+</footer>
+
+</body>
+</html>
