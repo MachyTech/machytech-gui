@@ -115,6 +115,22 @@ def settings_send():
             f.write('N_SAMPLEPOINTS='+N_samplepoints+'\n')
         f.close()
 
+@app.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    user = current_user.username
+    passw = current_user.password
+    mail = current_user.email
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
+        account = users.query.filter_by(username=user).first()
+        account.username = username
+        account.password = password
+        account.email = email
+        db.session.commit()
+    return render_template('profile.html', username=user, email=mail)
 #Allow to logout
 @app.route('/logout')
 @login_required
