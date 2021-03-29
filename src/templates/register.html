@@ -76,7 +76,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <i class="fa fa-envelope icon"></i>
         <input class="input-field w3-border" type="email" placeholder = "E-mail" required name="email" id="email">
       </div>
-      <div class="msg">{{msg}}</div> 
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="msg">{{messages[0]}}</div>
+      {% endif %}
+      {% endwith %}
       <br>
       <button class="btn" type="submit" value="Register" diabled>
         <i class="fa fa-sign-in"></i> REGISTER
@@ -103,6 +107,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 <div class="w3-xlarge w3-section">
   <a href="https://medium.com/@machytech" class="fa fa-medium w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://twitter.com/MachyTech" class="fa fa-twitter w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+  <a href="https://www.linkedin.com/company/machytech" class="fa fa-linkedin w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://www.youtube.com/channel/UCiW0UZxbnujYJFIxCzSYc2A/featured" class="fa fa-youtube w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://www.instagram.com/machy.tech/" class="fa fa-instagram w3-hover-opacity" target=_blank style="text-decoration: none"></a>
 </div>

@@ -63,25 +63,32 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <i class="fa fa-user icon"></i>
         <input class="input-field w3-border" type="text" placeholder="Username" required name="username">
       </div>
-    <div class="input-container">
-      <i class="fa fa-lock icon"></i>
-      <input class="input-field w3-border" type="password" placeholder="Password" required name="password">
-    </div>
-    <div class="msg">{{msg}}</div>
-    <br>
-    <button class="btn" type="submit" value="Login">
-      <i class="fa fa-sign-in"></i> LOGIN
-    </button>
+      <div class="input-container">
+        <i class="fa fa-lock icon"></i>
+        <input class="input-field w3-border" type="password" placeholder="Password" required name="password">
+      </div>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="msg">{{messages[0]}}</div>
+      {% endif %}
+      {% endwith %}
+      <br>
+      <button class="btn" type="submit" value="Login">
+        <i class="fa fa-sign-in"></i> LOGIN
+      </button>
     </form>
     <br>
     Forgot your <a href="{{ url_for('logout') }}">password</a>?
+    <br>
   </div>
 </div>
+
 <footer class="w3-bottom w3-center w3-black w3-padding-64">
 <a href="#" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
 <div class="w3-xlarge w3-section">
   <a href="https://medium.com/@machytech" class="fa fa-medium w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://twitter.com/MachyTech" class="fa fa-twitter w3-hover-opacity" target=_blank style="text-decoration: none"></a>
+  <a href="https://www.linkedin.com/company/machytech" class="fa fa-linkedin w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://www.youtube.com/channel/UCiW0UZxbnujYJFIxCzSYc2A/featured" class="fa fa-youtube w3-hover-opacity" target=_blank style="text-decoration: none"></a>
   <a href="https://www.instagram.com/machy.tech/" class="fa fa-instagram w3-hover-opacity" target=_blank style="text-decoration: none"></a>
 </div>
