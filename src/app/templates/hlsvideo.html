@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <title>MachyTech</title>
+    <link rel="icon" href="/static/media/Logo_icon.png" sizes="64x64" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/video.js/dist/video-js.css" rel="stylesheet">
+    <style>
+        html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+            .logo-image img{
+              height: 40px;
+              width: 40px;
+            }
+        label {
+          background-color: black;
+          color: white;
+          padding: 0.6rem;
+          font-family: "Raleway", sans-serif;
+          cursor: pointer;
+        }
+        </style>
+    <body class="w3-light-grey">
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-white w3-large w3-card" style="z-index:4">
+      <button class="w3-bar-item w3-button w3-hover-none w3-hover-text-black" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+      <span class="w3-bar-item w3-right logo-image"><img src="/static/media/Logo_icon.png"></span>
+    </div>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-white w3-animate-left" style="z-index:3;width:300px;display:none" id="mySidebar"><br>
+      <div class="w3-container w3-row">
+        <div class="w3-col s8 w3-bar">
+          <span>Welcome, <strong>{{username}}</strong>.</span><br>
+        </div>
+      </div>
+      <hr>
+      <div class="w3-container">
+        <h5>Dashboard</h5>
+      </div>
+      <div class="w3-bar-block">
+        <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+        <a href="#settings" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a>
+        <a href="{{ url_for('profile') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw"></i>  Profile</a>
+        {% if current_user.username == 'admin' %}
+        <a href="{{ url_for('register') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw"></i>  Register</a>
+        {% endif %}
+        <a href="{{ url_for('logout') }}" class="w3-bar-item w3-button w3-padding"><i class="fa fa-sign-out fa-fw"></i>  Logout</a>
+      </div>
+    </nav>
+    
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+    
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-top:43px;margin-left:200px;margin-right:200px">
+      <!-- HEADER -->
+      <div class="w3-container"  id = 'settings' style="padding-top:22px">
+        <h5><b><i class="fa fa-cog"></i> MachyStream </b></h5>
+      </div>
+      <video-js id="video_id" class="vjs-default-skin" controls preload="auto" width="640" height="360">
+        <source src="/video/playlist.m3u8" type="application/x-mpegURL">
+      </video-js>
+    </div>
+    <script src="https://unpkg.com/video.js/dist/video.js"></script>
+    <script src="https://unpkg.com/@videojs/http-streaming/dist/videojs-http-streaming.js"></script>
+    <script>
+      // videoplayer
+      var player = videojs('video_id')
+
+      // Get the Sidebar
+      var mySidebar = document.getElementById("mySidebar");
+      
+      // Get the DIV with overlay effect
+      var overlayBg = document.getElementById("myOverlay");
+      
+      // Toggle between showing and hiding the sidebar, and add overlay effect
+      function w3_open() {
+        if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = "none";
+        } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = "block";
+        }
+      }
+      
+      // Close the sidebar with the close button
+      function w3_close() {
+        mySidebar.style.display = "none";
+        overlayBg.style.display = "none";
+      }
+      </script>
+
+    </body>
+</html>
