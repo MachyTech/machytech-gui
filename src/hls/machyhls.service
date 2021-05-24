@@ -1,0 +1,12 @@
+[Unit]
+Description=machyhls-service
+After=network.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=30
+User=timo
+ExecStart=/usr/local/bin/starthls.sh
+ExecStop=rm -r /home/timo/Projects/machytech/machytech-gui/src/video

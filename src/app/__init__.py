@@ -99,6 +99,12 @@ def register_create():
             flash('You have successfully registered!')
             return redirect(url_for('register'))
 
+#home page
+@app.route('/home')
+@login_required
+def render_home():
+    return render_template('homepage.html', username=current_user.username)
+
 #Settings page
 @app.route('/settings')
 @login_required
@@ -150,9 +156,9 @@ def logout():
 @app.route('/video')
 @login_required
 def show_video():
-    return render_template('hlsvideo.html')
+    return render_template('hlsvideo.html', username=current_user.username)
 
 @app.route('/video/<string:file_name>')
 def stream(file_name):
-    video_dir = './video'
+    video_dir = '../video'
     return send_from_directory(directory=video_dir, filename=file_name)
