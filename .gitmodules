@@ -1,0 +1,3 @@
+[submodule "linux-app/vendor/machy-api"]
+	path = linux-app/vendor/machy-api
+	url = https://github.com/MachyTech/machy-api.git
