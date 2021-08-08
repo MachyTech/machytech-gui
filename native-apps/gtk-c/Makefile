@@ -5,7 +5,7 @@ SHELL = /bin/sh
 
 CC = gcc
 OBJS = src/main.c
-CFLAGS = -g -Wall -Ivendor/machy-api/include/ `pkg-config --cflags gtk4`
+CFLAGS = -g -Wall -Imachy-api/ `pkg-config --cflags gtk4`
 LDFLAGS = `pkg-config --libs gtk4`
 
 app: ${OBJ}
