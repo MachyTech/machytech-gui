@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <object id="window" class="GtkWindow">
+    <property name="title">Grid</property>
+    <child>
+      <object id="grid" class="GtkGrid">
+        <child>
+          <object id="TEST1" class="GtkButton">
+            <property name="label">TEST1</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object id="ECHO1" class="GtkButton">
+            <property name="label">ECHO1</property>
+            <layout>
+              <property name="column">1</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object id="HELLO" class="GtkButton">
+            <property name="label">HELLO</property>
+            <layout>
+              <property name="column">2</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object id="TRAJSIM001" class="GtkButton">
+            <property name="label">TRAJ</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">1</property>
+              <property name="column-span">3</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object id="START00001" class="GtkButton">
+            <property name="label">START</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+              <property name="column-span">3</property>
+              </layout>
+              </object>
+        </child>
+        <child>
+          <object id="quit" class="GtkButton">
+            <property name="label">Quit</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">3</property>
+              <property name="column-span">3</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkFileFilter">
+  <mime-types>
+    <mime-type>text/plain</mime-type>
+    <mime-type>image/ *</mime-type>
+  </mime-types>
+  <patterns>
+    <pattern>*.txt</pattern>
+    <pattern>*.png</pattern>
+  </patterns>
+  </object>
+</interface>
