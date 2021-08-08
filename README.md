@@ -7,7 +7,14 @@ code used for the graphical user interface.
 pip install requirements.txt
 python run.py
 ```
+> native applications
+
+We have a gtk application with which you can easily test machytech backend code. You need to copy the machyapi.h header-only library into machy-api directory and you are able to compile with the makefile.
+
+![native-gui](docs/gtk-machytech.png)
+
 ### git submodules
+<- DEPR ->
 We are using jsvideo libraries. Check the repository on how to compile.
 ```
 git submodule update --init --recursive
