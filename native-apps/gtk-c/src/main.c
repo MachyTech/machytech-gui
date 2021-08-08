@@ -14,34 +14,34 @@ send_test000001 (GtkWidget *widget,
              gpointer   data)
 {
   printf("send: TEST000001\n");
-  init_socket("0.0.0.0", "3333");
-
-  print_addr();
-  create();
-  wait_for_connection();
-
-  run_process("TEST000001");
+  machy_request("TEST000001");
 }
 
 static void
 send_echo000001 (GtkWidget *widget,
               gpointer data)
 {
-  init_socket("0.0.0.0", "3333");
-
-  print_addr();
-  create();
-  wait_for_connection();
-
-  run_process("ECHO000001");
+  printf("send: ECHO000001");
+  machy_request("ECHO000001");
 }
 
-/* static void
-send_start000001 (GtkWidget *widget,
+static void
+send_trajsim001 (GtkWidget *widget,
               gpointer data)
 {
-  init_socket()
-} */
+  char *message = "TRAJSIM001:";
+  char *file_contents = read_file("trajectory_1.txt");
+  char buf[strlen(message)+strlen(file_contents)];
+  strcat(strcpy(buf, message), file_contents);
+  machy_request(buf);
+}
+
+static void
+send_start00001 (GtkWidget *widget,
+              gpointer data)
+{
+  machy_request("START00001");
+}
 
 static void
 hello_world (GtkWidget *widget,
@@ -53,9 +53,11 @@ hello_world (GtkWidget *widget,
 static void
 quit_cb (GtkWindow *window)
 {
+  cleanup();
   gtk_window_close (window);
 }
 
+#ifdef FILE_DIALOG
 static void
 on_open_response(GtkDialog *dialog,
                 int response)
@@ -95,6 +97,7 @@ send_trajsim001 (GObject *window)
   gtk_widget_show (dialog);
   g_signal_connect (dialog, "response", G_CALLBACK(on_open_response), NULL);
 }
+#endif
 
 static void
 activate (GtkApplication *app,
@@ -120,6 +123,9 @@ activate (GtkApplication *app,
 
   button = gtk_builder_get_object (builder, "TRAJSIM001");
   g_signal_connect (button, "clicked", G_CALLBACK (send_trajsim001), NULL);
+
+  button = gtk_builder_get_object (builder, "START00001");
+  g_signal_connect (button, "clicked", G_CALLBACK (send_start00001), NULL);
 
   button = gtk_builder_get_object (builder, "quit");
   g_signal_connect_swapped (button, "clicked", G_CALLBACK (quit_cb), window);

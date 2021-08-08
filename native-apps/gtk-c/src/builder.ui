@@ -42,11 +42,21 @@
           </object>
         </child>
         <child>
+          <object id="START00001" class="GtkButton">
+            <property name="label">START</property>
+            <layout>
+              <property name="column">0</property>
+              <property name="row">2</property>
+              <property name="column-span">3</property>
+              </layout>
+              </object>
+        </child>
+        <child>
           <object id="quit" class="GtkButton">
             <property name="label">Quit</property>
             <layout>
               <property name="column">0</property>
-              <property name="row">2</property>
+              <property name="row">3</property>
               <property name="column-span">3</property>
             </layout>
           </object>
